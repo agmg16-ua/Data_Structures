@@ -1,4 +1,5 @@
 #include <iostream>
+
 #include "tcomplejo.h"
 
 using namespace std;
@@ -9,13 +10,13 @@ TComplejo::TComplejo() {
 } 
 
 TComplejo::TComplejo(double real) {
-    re = real;
+    this->re = real;
     im = 0;
 }
 
 TComplejo::TComplejo(double real, double imaginaria) {
-    re = real;
-    im = imaginaria;
+    this->re = real;
+    this->im = imaginaria;
 }
 
 TComplejo::TComplejo(const TComplejo& complejo) {
@@ -26,6 +27,14 @@ TComplejo::TComplejo(const TComplejo& complejo) {
 TComplejo::~TComplejo() {
     this->re = 0;
     this->im = 0;
+}
+
+double TComplejo::Re() {
+    return this->re;
+}
+
+double TComplejo::Im() {
+    return this->im;
 }
 
 void TComplejo::Re(double real) {
@@ -39,7 +48,13 @@ void TComplejo::Im(double imaginaria) {
 //otros metodos
 
 TComplejo& TComplejo::operator=(const TComplejo& complejo) {
+    if(this != &complejo) {
+        (*this).~TComplejo();
+        im = complejo.im;
+        re = complejo.re;
+    }
 
+    return *this;
 }
 
 TComplejo TComplejo::operator+(const TComplejo& complejo) {
