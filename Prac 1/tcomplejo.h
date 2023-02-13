@@ -1,3 +1,6 @@
+#ifndef _TCOMPLEJO_H_
+#define _TCOMPLEJO_H_
+
 #include <iostream>
 
 using namespace std;
@@ -59,3 +62,4 @@ class TComplejo{
         double Arg(void);
         double Mod(void);
 };
+#endif
