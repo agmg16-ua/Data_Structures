@@ -1,4 +1,5 @@
 #include <iostream>
+#include <math.h>
 
 #include "tcomplejo.h"
 
@@ -58,35 +59,67 @@ TComplejo& TComplejo::operator=(const TComplejo& complejo) {
 }
 
 TComplejo TComplejo::operator+(const TComplejo& complejo) {
+    TComplejo aux;
+    aux.re = re + complejo.re;
+    aux.im = im + complejo.im;
 
+    return aux;
 }
 
 TComplejo TComplejo::operator-(const TComplejo& complejo) {
+    TComplejo aux;
+    aux.re = re - complejo.re;
+    aux.im = im - complejo.im;
 
+    return aux;
 }
 
 TComplejo TComplejo::operator*(const TComplejo& complejo) {
+    TComplejo aux;
+    aux.re = re * complejo.re;
+    aux.im = im * complejo.im;
 
+    return aux;
 }
 
 TComplejo TComplejo::operator+(double real) {
+    TComplejo aux;
+    aux.re = re + real;
+    aux.im = im;
 
+    return im;
 }
 
 TComplejo TComplejo::operator-(double real) {
+    TComplejo aux;
+    aux.re = re - real;
+    aux.im = im;
 
+    return aux;
 }
 
 TComplejo TComplejo::operator*(double real) {
+    TComplejo aux;
+    aux.re = re * real;
+    aux.im = im;
 
+    return aux;
 }
 
 bool TComplejo::operator==(const TComplejo& complejo) {
+    if(re==complejo.re && im==complejo.im) {
+        return true;
+    }
 
+    return false;
 }
 
 bool TComplejo::operator!=(const TComplejo& complejo) {
+    if(re==complejo.re && im==complejo.im) {
+        return false;
+    }
 
+    return true;
 }
 
 double TComplejo::Re() {
@@ -98,21 +131,31 @@ double TComplejo::Im() {
 }
 
 void TComplejo::Re(double real) {
-
+    re = real;
 }
 
 void TComplejo::Im(double imaginaria) {
-
+    im = imaginaria;
 }
 
 double TComplejo::Arg() {
+    double arg;
 
+    if(re==0) {
+        arg = 0;
+    } else {
+        arg = atan2(im, re);
+    } 
+
+    return arg;
 }
 
 double TComplejo::Mod() {
-
+    double mod = sqrt(pow(re,2) + pow(im,2));
+    return mod;
 }
 
-ostream& operator<<(ostream &s, const TComplejo &obj) {
-
+ostream& operator<<(ostream &o, TComplejo& obj) {
+    o << "(" << obj.re << " " << obj.im << ")";
+    return o;
 }
