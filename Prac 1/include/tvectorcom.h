@@ -16,11 +16,19 @@ class TVectorCom{
     public:
         TVectorCom();
         TVectorCom(int);
-        TVectorCom(TVectorCom &);
+        TVectorCom(const TVectorCom &);
         ~TVectorCom();
-        TVectorCom & operator=(TVectorCom &);
+        TVectorCom & operator=(const TVectorCom &);
 
-        bool operator==(TVectorCom &);
-        bool operator!=(TVectorCom &);
+        bool operator==(const TVectorCom &);
+        bool operator!=(const TVectorCom &);
+        TComplejo & operator[](int);
+        TComplejo operator[](int) const;
+
+        int Tamano();
+        int Ocupadas();
+        bool ExisteCom(const TComplejo &);
+        void MostrarComplejos(double);
+        bool Redimensionar(int);
 };
 #endif
