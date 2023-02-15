@@ -123,9 +123,7 @@ bool TComplejo::operator!=(const TComplejo& complejo) {
 }
 
 double TComplejo::Arg() {
-    double arg;
-    arg = atan2(im, re); 
-
+    double arg = atan2(im, re); 
     return arg;
 }
 
