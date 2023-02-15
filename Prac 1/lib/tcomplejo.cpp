@@ -122,22 +122,6 @@ bool TComplejo::operator!=(const TComplejo& complejo) {
     return true;
 }
 
-double TComplejo::Re() {
-    return this->re;
-}
-
-double TComplejo::Im() {
-    return this->im;
-}
-
-void TComplejo::Re(double real) {
-    re = real;
-}
-
-void TComplejo::Im(double imaginaria) {
-    im = imaginaria;
-}
-
 double TComplejo::Arg() {
     double arg;
 
