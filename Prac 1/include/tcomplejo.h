@@ -12,7 +12,7 @@ class TComplejo{
     friend TComplejo operator+ (double , TComplejo&);
     friend TComplejo operator- (double , TComplejo&);
     friend TComplejo operator* (double , TComplejo&);
-
+ 
     private:
         //parte real
         double re;
