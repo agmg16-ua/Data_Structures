@@ -80,25 +80,24 @@ bool TVectorCom::operator!=(const TVectorCom &vecCom) {
     return false;
 }
 
-TComplejo & TVectorCom::operator[](int pos) {
-    TComplejo vacio;
+TComplejo &TVectorCom::operator[](int pos) {
 
     if(pos<=tamano && pos>0) {
         return c[pos-1];
     }
 
-    return vacio;
+    return error;
     
 }
 
 TComplejo TVectorCom::operator[](int pos) const {
-    TComplejo vacio;
+    TComplejo complejo;
 
     if(pos<=tamano && pos>0) {
         return c[pos-1];
     }
 
-    return vacio;
+    return complejo;
 }
 
 
@@ -201,6 +200,8 @@ bool TVectorCom::Redimensionar(int tam) {
 
         return true;
     }
+
+    return false;
 
 }
 
