@@ -17,6 +17,9 @@ class TVectorCom{
         
         //Tamanyo del vector
         int tamano;
+
+        //Variable error
+        TComplejo error;
     
     public:
         TVectorCom();
