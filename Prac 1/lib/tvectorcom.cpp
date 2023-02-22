@@ -24,9 +24,10 @@ TVectorCom::TVectorCom(int tam) {
 
 TVectorCom::TVectorCom(const TVectorCom &vecCom) {
     c = new TComplejo[vecCom.tamano];
-    this->tamano = vecCom.tamano;
+    tamano = vecCom.tamano;
+    c = new TComplejo[tamano];
     for(int i=0; i<tamano; i++) {
-        c[i] = vecCom[i];
+        c[i] = vecCom.c[i];
     }
 }
 
