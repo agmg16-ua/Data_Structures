@@ -136,3 +136,21 @@ ostream& operator<<(ostream &o, TComplejo& obj) {
     o << "(" << obj.re << " " << obj.im << ")";
     return o;
 }
+
+TComplejo operator+(double real, const TComplejo &complejo) {
+    TComplejo numero(real);
+
+    return numero + complejo;
+}
+
+TComplejo operator-(double real, const TComplejo &complejo) {
+    TComplejo numero(real);
+
+    return numero - complejo;
+}
+
+TComplejo operator*(double real, const TComplejo &complejo) {
+    TComplejo numero(real);
+
+    return numero * complejo;
+}
