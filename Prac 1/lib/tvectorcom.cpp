@@ -31,40 +31,74 @@ TVectorCom::TVectorCom(const TVectorCom &vecCom) {
 }
 
 TVectorCom::~TVectorCom() {
-    //delete[] c;
-    //c = NULL;
-    for(int i=0; i<tamano; i++) {
-        c[i].~TComplejo();
-    }
+    delete[] c;
+    c = NULL;
     tamano = 0;
 }
 
 
 TVectorCom & TVectorCom::operator=(const TVectorCom &vecCom) {
-    TVectorCom aux[vecCom.tamano];
 
-    for(int i=0; i<this->tamano; i++) {
-        (*aux).c[i]= vecCom.c[i];
+    if(this != &vecCom) {
+        (*this).~TVectorCom();
+
+        c = new TComplejo[vecCom.tamano];
+        tamano = vecCom.tamano;
+
+        for(int i=0; i<tamano; i++) {
+            c[i] = vecCom.c[i];
+        }
     }
 
-    return (*aux);
+    return (*this);
 }
 
 
 bool TVectorCom::operator==(const TVectorCom &vecCom) {
+    if(tamano != vecCom.tamano) {
+        return false;
+    }
 
+    for(int i=0; i<tamano; i++) {
+        if(c[i] != vecCom.c[i]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 bool TVectorCom::operator!=(const TVectorCom &vecCom) {
+        if(tamano != vecCom.tamano) {
+        return true;
+    }
 
+    for(int i=0; i<tamano; i++) {
+        if(c[i] != vecCom.c[i]) {
+            return true;
+        }
+    }
+    return false;
 }
 
 TComplejo & TVectorCom::operator[](int pos) {
+    TComplejo vacio;
 
+    if(pos<=tamano && pos>0) {
+        return c[pos-1];
+    }
+
+    return vacio;
+    
 }
 
 TComplejo TVectorCom::operator[](int pos) const {
+    TComplejo vacio;
 
+    if(pos<=tamano && pos>0) {
+        return c[pos-1];
+    }
+
+    return vacio;
 }
 
 
@@ -73,7 +107,18 @@ int TVectorCom::Tamano() {
 }
 
 int TVectorCom::Ocupadas() {
+    int contador = 0;
 
+    TComplejo vacio;
+
+    for(int i=0; i<tamano; i++) {
+        if(c[i]==vacio) {
+            contador++;
+        }
+    }
+
+    return contador;
+    
 }
 
 bool TVectorCom::ExisteCom(const TComplejo &complejo) {
