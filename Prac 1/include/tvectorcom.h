@@ -9,8 +9,13 @@ using namespace std;
 
 class TVectorCom{
 
+    friend ostream& operator<<(ostream &, TVectorCom &);
+
     private:
-        TComplejo c;
+        //Objetos de tipo TComplejo
+        TComplejo *c;
+        
+        //Tamanyo del vector
         int tamano;
     
     public:
@@ -20,6 +25,7 @@ class TVectorCom{
         ~TVectorCom();
         TVectorCom & operator=(const TVectorCom &);
 
+        //Operadores
         bool operator==(const TVectorCom &);
         bool operator!=(const TVectorCom &);
         TComplejo & operator[](int);
