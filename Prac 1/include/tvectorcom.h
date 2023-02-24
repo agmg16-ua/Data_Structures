@@ -9,6 +9,7 @@ using namespace std;
 
 class TVectorCom{
 
+    //Funciones amigas
     friend ostream& operator<<(ostream &, TVectorCom &);
 
     private:
@@ -22,18 +23,20 @@ class TVectorCom{
         TComplejo error;
     
     public:
+        //Constructores
         TVectorCom();
         TVectorCom(int);
         TVectorCom(const TVectorCom &);
         ~TVectorCom();
-        TVectorCom & operator=(const TVectorCom &);
 
         //Operadores
+        TVectorCom & operator=(const TVectorCom &);
         bool operator==(const TVectorCom &);
         bool operator!=(const TVectorCom &);
         TComplejo & operator[](int);
         TComplejo operator[](int) const;
 
+        //Otros metodos
         int Tamano();
         int Ocupadas();
         bool ExisteCom(const TComplejo &);

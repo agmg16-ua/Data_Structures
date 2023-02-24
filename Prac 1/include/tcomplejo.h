@@ -21,44 +21,29 @@ class TComplejo{
         double im;
     
     public:
-        //se inicializan las partes real e imaginaria a 0
+        //Constructores
         TComplejo();
-
-        //se pasa el valor de la parte real
         TComplejo(double);
-
-        //se pasan la parte real e imaginaria
         TComplejo(double, double);
-
-        //constructor de copia
         TComplejo(const TComplejo&);
-
-        //destructor
         ~TComplejo();
 
-        //sobrecarga del operador de asignación
+        //Operadores
         TComplejo& operator= (const TComplejo&);
-
-        //operadores
         TComplejo operator+ (const TComplejo&);
         TComplejo operator- (const TComplejo&);
         TComplejo operator* (const TComplejo&);
         TComplejo operator+ (double);
         TComplejo operator- (double);
         TComplejo operator* (double);
-
         bool operator== (const TComplejo&);
         bool operator!= (const TComplejo&);
         
-        //devuelve la parte real/imaginaria;
+        //Otros metodos
         double Re();
         double Im();
-
-        //modifica la parte real/imaginaria;
         void Re(double);
         void Im(double);
-
-        //calcula el argumento(radianes)/Módulo
         double Arg(void);
         double Mod(void);
 };
