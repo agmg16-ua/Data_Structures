@@ -69,7 +69,7 @@ bool TVectorCom::operator==(const TVectorCom &vecCom) {
 }
 
 bool TVectorCom::operator!=(const TVectorCom &vecCom) {
-        if(tamano != vecCom.tamano) {
+    if(tamano != vecCom.tamano) {
         return true;
     }
 
