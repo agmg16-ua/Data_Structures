@@ -17,11 +17,17 @@ TListaNodo::TListaNodo(const TListaNodo &listaNodo):e() {
 }
 
 TListaNodo::~TListaNodo() {
-
+    e = NULL;
+    anterior = NULL;
+    siguiente = NULL;
 }
 
 TListaNodo& TListaNodo::operator=(const TListaNodo listaNodo) {
+    if((*this).e != listaNodo.e) {
+        (*this).~TListaNodo();
 
+        
+    }
 }
 
 
