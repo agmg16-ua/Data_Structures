@@ -46,8 +46,6 @@ void TComplejo::Im(double imaginaria) {
     this->im = imaginaria;
 }
 
-//otros metodos
-
 TComplejo& TComplejo::operator=(const TComplejo& complejo) {
     if(this != &complejo) {
         (*this).~TComplejo();
