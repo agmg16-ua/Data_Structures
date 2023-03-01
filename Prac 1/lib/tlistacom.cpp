@@ -5,12 +5,15 @@ using namespace std;
 #include "tlistacom.h"
 
 //*************************Clase TListaNodo*************************
-TListaNodo::TListaNodo() {
-
+TListaNodo::TListaNodo():e() {
+    anterior = NULL;
+    siguiente = NULL;
 }
 
-TListaNodo::TListaNodo(const TListaNodo &listaNodo) {
-
+TListaNodo::TListaNodo(const TListaNodo &listaNodo):e() {
+    e = listaNodo.e;
+    anterior = NULL;
+    siguiente = NULL;
 }
 
 TListaNodo::~TListaNodo() {
