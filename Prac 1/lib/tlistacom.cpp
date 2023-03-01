@@ -62,7 +62,7 @@ bool TListaPos::EsVacia() {
 }
 
 
-
+ 
 
 //**************************Clase TListaCom*************************
 TListaCom::TListaCom() {
