@@ -23,7 +23,7 @@ class TListaNodo {
     public:
         //Constructores
         TListaNodo();
-        TListaNodo(TListaNodo &);
+        TListaNodo(const TListaNodo &);
         ~TListaNodo();
 
         //Operadores
@@ -39,13 +39,13 @@ class TListaPos {
     public:
         //Constructores
         TListaPos();
-        TListaPos(TListaPos &);
+        TListaPos(const TListaPos &);
         ~TListaPos();
 
         //Operadores
         TListaPos& operator=(const TListaPos &);
-        bool operator==(TListaPos &);
-        bool operator!=(TListaPos &);
+        bool operator==(const TListaPos &);
+        bool operator!=(const TListaPos &);
 
         //Otros metodos
         TListaPos Anterior();
@@ -79,7 +79,7 @@ class TListaCom {
         bool EsVacia();
         bool InsCabeza(const TComplejo &);
         bool InsertarI(const TComplejo &, const TListaPos &);
-        bool InsertarD(const TComplejo &, TListaPos &);
+        bool InsertarD(const TComplejo &, const TListaPos &);
         bool Borrar(const TComplejo &);
         bool BorrarTodos(const TComplejo &);
         bool Borrar(const TListaPos &);
