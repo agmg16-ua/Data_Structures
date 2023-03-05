@@ -27,6 +27,7 @@ TListaNodo& TListaNodo::operator=(const TListaNodo listaNodo) {
         (*this).~TListaNodo();
 
         
+        
     }
 }
 
