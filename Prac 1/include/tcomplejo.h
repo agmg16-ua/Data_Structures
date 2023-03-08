@@ -40,8 +40,8 @@ class TComplejo{
         bool operator!= (const TComplejo&);
         
         //Otros metodos
-        double Re();
-        double Im();
+        double Re(void);
+        double Im(void);
         void Re(double);
         void Im(double);
         double Arg(void);

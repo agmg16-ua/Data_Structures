@@ -138,7 +138,7 @@ void TVectorCom::MostrarComplejos(double real) {
 
     cout << '[';
     for(int i=0; i<this->tamano; i++ ) {
-        if(c[i].Re()==real) {
+        if(c[i].Re() >= real) {
             if(coma==true) {
                 cout << ", ";
             }

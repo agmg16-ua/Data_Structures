@@ -120,12 +120,12 @@ bool TComplejo::operator!=(const TComplejo& complejo) {
     return true;
 }
 
-double TComplejo::Arg() {
+double TComplejo::Arg(void) {
     double arg = atan2(im, re); 
     return arg;
 }
 
-double TComplejo::Mod() {
+double TComplejo::Mod(void) {
     double mod = sqrt(pow(re,2) + pow(im,2));
     return mod;
 }
