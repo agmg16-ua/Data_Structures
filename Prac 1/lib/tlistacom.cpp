@@ -146,7 +146,12 @@ bool TListaCom::operator!=(const TListaCom &listCom) {
 }
 
 TListaCom TListaCom::operator+(const TListaCom &listaCom) {
+    TListaCom aux;
     
+    aux.primero = this->primero;
+    aux.ultimo = listaCom.ultimo;
+
+    return aux;
 }
 
 TListaCom TListaCom::operator-(const TListaCom &listaCom) {
@@ -154,7 +159,11 @@ TListaCom TListaCom::operator-(const TListaCom &listaCom) {
 }
 
 bool TListaCom::EsVacia() {
+    if(this->primero == NULL) {
+        return true;
+    }
 
+    return false;
 }
 
 bool TListaCom::InsCabeza(const TComplejo &complejo) {
@@ -175,15 +184,13 @@ bool TListaCom::Borrar(const TComplejo &complejo) {
 
 bool TListaCom::BorrarTodos(const TComplejo &complejo) {
 
+}
+
+bool TListaCom::Borrar(const TListaPos &listaPos) {
 
 }
 
-bool TListaCom::Borrar(const TListaPos &complejo) {
-
-
-}
-
-TComplejo TListaCom::Obtener(const TListaPos &complejo) {
+TComplejo TListaCom::Obtener(const TListaPos &listaPos) {
 
 }
 
@@ -192,15 +199,33 @@ bool TListaCom::Buscar(const TComplejo &complejo) {
 }
 
 int TListaCom::Longitud() {
+    int longitud = 0;
+    for(TListaPos i = this->Primera(); !i.EsVacia(); i = i.Siguiente()) {
+        longitud++;
+    }
+
+    return longitud;
 
 }
 
 TListaPos TListaCom::Primera() {
+    TListaPos aux;
 
+    if(!this->EsVacia()) {
+        aux.pos = primero;
+    }
+
+    return aux;
 }
 
 TListaPos TListaCom::Ultima() {
+    TListaPos aux;
 
+    if(!this->EsVacia()) {
+        aux.pos = ultimo;
+    }
+
+    return aux;
 }
 
 

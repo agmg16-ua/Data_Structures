@@ -171,6 +171,8 @@ bool TVectorCom::Redimensionar(int tam) {
         tamano = tam;
         c = aux.c;
 
+        aux.~TVectorCom();
+
         return true;
     }
 
