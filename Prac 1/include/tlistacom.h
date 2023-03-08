@@ -9,16 +9,18 @@ using namespace std;
 #include "tvectorcom.h"
 
 class TListaNodo {
+    friend class TListaPos;
+    friend class TLiscaCom;
 
     private:
         //Elemento del nodo
         TComplejo e;
 
         //El nodo anterior
-        TComplejo *anterior;
+        TListaNodo *anterior;
 
         //El nodo siguiente
-        TComplejo *siguiente;
+        TListaNodo *siguiente;
     
     public:
         //Constructores
@@ -31,6 +33,9 @@ class TListaNodo {
 };
 
 class TListaPos {
+
+    friend class TListaNodo;
+    friend class TListaCom;
 
     private:
         //Puntero a un nodo de la lista
@@ -54,6 +59,9 @@ class TListaPos {
 };
 
 class TListaCom {
+
+    friend class TListaPos;
+    friend class TListaNodo;
 
     private:
         //Primer elemento de la lista

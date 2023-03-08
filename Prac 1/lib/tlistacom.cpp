@@ -23,10 +23,12 @@ TListaNodo::~TListaNodo() {
 }
 
 TListaNodo& TListaNodo::operator=(const TListaNodo listaNodo) {
-    if((*this).e != listaNodo.e) {
+    if(this != &listaNodo) {
         (*this).~TListaNodo();
 
-        
+        this->e = listaNodo.e;
+        this->anterior = listaNodo.anterior;
+        this->siguiente = listaNodo.siguiente;
         
     }
 }
@@ -36,39 +38,65 @@ TListaNodo& TListaNodo::operator=(const TListaNodo listaNodo) {
 
 //**************************Clase TListaPos*************************
 TListaPos::TListaPos() {
-
+    pos = NULL;
 }
 
 TListaPos::TListaPos(const TListaPos &listaPos) {
-
+    (*this).pos = listaPos.pos;
 } 
 
 TListaPos::~TListaPos() {
-
+    pos = NULL;
 }
 
 TListaPos& TListaPos::operator=(const TListaPos &listaPos) {
+    if(this != &listaPos) {
+        (*this).~TListaPos();
 
+        (*this).pos = listaPos.pos;
+    }
+
+    return (*this);
 }
 
 bool TListaPos::operator==(const TListaPos &listaPos) {
+    if(this->pos == listaPos.pos) {
+        return true;
+    }
 
+    return false;
 }
 
 bool TListaPos::operator!=(const TListaPos &listaPos) {
+    if(this->pos == listaPos.pos) {
+        return false;
+    }
 
+    return true;
 }
 
 TListaPos TListaPos::Anterior() {
+    TListaPos aux;
 
+    aux.pos = this->pos->anterior;
+
+    return aux;
 }
 
 TListaPos TListaPos::Siguiente() {
+    TListaPos aux;
 
+    aux.pos = this->pos->siguiente;
+
+    return aux;
 }
 
 bool TListaPos::EsVacia() {
+    if(pos==NULL) {
+        return true;
+    }
 
+    return false;
 }
 
 
@@ -76,31 +104,49 @@ bool TListaPos::EsVacia() {
 
 //**************************Clase TListaCom*************************
 TListaCom::TListaCom() {
-
+    primero = NULL;
+    ultimo = NULL;
 }
 
-TListaCom::TListaCom(const TListaCom &listaCom) {
-
+TListaCom::TListaCom(const TListaCom &listCom) {
+    this->primero = listCom.primero;
+    this->ultimo = listCom.ultimo;
 }
 
 TListaCom::~TListaCom() {
-
+    primero = NULL;
+    ultimo = NULL;
 }
 
-TListaCom& TListaCom::operator=(const TListaCom &) {
-    
+TListaCom& TListaCom::operator=(const TListaCom &listCom) {
+    if(this != &listCom) {
+        (*this).~TListaCom();
+
+        this->primero = listCom.primero;
+        this->ultimo = listCom.ultimo;
+    }
+
+    return (*this);
 }
 
 bool TListaCom::operator==(const TListaCom &listCom) {
+    if(this->primero == listCom.primero && this->ultimo == listCom.ultimo) {
+        return true;
+    }
 
+    return false;
 }
 
-bool TListaCom::operator!=(const TListaCom &listaCom) {
+bool TListaCom::operator!=(const TListaCom &listCom) {
+    if(this->primero == listCom.primero && this->ultimo == listCom.ultimo) {
+        return false;
+    }
 
+    return true;
 }
 
 TListaCom TListaCom::operator+(const TListaCom &listaCom) {
-
+    
 }
 
 TListaCom TListaCom::operator-(const TListaCom &listaCom) {
