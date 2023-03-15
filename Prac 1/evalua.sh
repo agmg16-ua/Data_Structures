@@ -3,7 +3,7 @@
 #
 
 #Si tus ficheros de prueba no comienzan por "tad", cambia "tad*.cpp" por el prefijo de tus ficheros, por ejemplo "prueba*.cpp":
-for FILE in PRUEBAS/*PRUEBA/tad*.cpp ; do 
+for FILE in TESTS_UNITARIOS/*PRUEBA/tad*.cpp ; do 
 	echo "Evaluando $FILE"
 	
 	cp $FILE src/tad.cpp 
@@ -18,3 +18,4 @@ for FILE in PRUEBAS/*PRUEBA/tad*.cpp ; do
 	fi
 done
 
+make clean
