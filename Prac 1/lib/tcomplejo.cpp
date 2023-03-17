@@ -85,7 +85,7 @@ TComplejo TComplejo::operator+(double real) {
     aux.re = re + real;
     aux.im = im;
 
-    return im;
+    return aux;
 }
 
 TComplejo TComplejo::operator-(double real) {
@@ -130,7 +130,7 @@ double TComplejo::Mod(void) {
     return mod;
 }
 
-ostream& operator<<(ostream &o, TComplejo& obj) {
+ostream& operator<<(ostream &o, const TComplejo& obj) {
     o << "(" << obj.re << " " << obj.im << ")";
     return o;
 }
