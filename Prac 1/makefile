@@ -5,8 +5,9 @@ OPTIONS= -g
 DEBUG= #-D DEBUG
 LIBDIR=lib
 INCLUDEDIR=include
-_OBJ= tcomplejo.o tvectorcom.o tlistacom.o 
+_OBJ= tcomplejo.o tvectorcom.o tlistacom.o
 OBJ = $(patsubst %,$(LIBDIR)/%,$(_OBJ))
+DEL = TESTS_UNITARIOS/TListaCom_PRUEBA/*.out TESTS_UNITARIOS/ComplejoPRUEBA/*.out TESTS_UNITARIOS/TVectorCom_PRUEBA/*.out 
 
 tad:    src/tad.cpp $(OBJ)
 	$(CC) $(OPTIONS) $(DEBUG) -I$(INCLUDEDIR) src/tad.cpp $(OBJ) -o tad
@@ -16,4 +17,4 @@ $(LIBDIR)/%.o : $(LIBDIR)/%.cpp $(INCLUDEDIR)/%.h
 
 
 clean:
-	rm -f $(OBJ) 
+	rm -f $(OBJ) $(DEL)

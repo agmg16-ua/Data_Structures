@@ -16,6 +16,6 @@ for FILE in TESTS_UNITARIOS/*PRUEBA/tad*.cpp ; do
 	else
 		echo "ERROR"
 	fi
+	
 done
 
-make clean
