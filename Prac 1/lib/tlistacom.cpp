@@ -115,11 +115,13 @@ TListaCom::TListaCom(const TListaCom &listaCom) {
         this->primero = NULL;
         this->ultimo = NULL;
     } else {
-       this->primero = listaCom.primero;
+       this->primero = listaCom.ultimo;
        this->ultimo = listaCom.ultimo;
+       this->primero->siguiente = NULL;
+       this->primero->anterior = NULL;
 
         //Se recorre desde el final la lista del parametro y se añaden en la cabeza de this, para que queden en el mismo orden
-       for(TListaPos i = listaCom.Ultima(); !i.EsVacia(); i = i.Anterior()) {
+       for(TListaPos i = listaCom.Ultima().Anterior(); !i.EsVacia(); i = i.Anterior()) {
             this->InsCabeza(i.pos->e);
        }
     }
@@ -197,17 +199,26 @@ bool TListaCom::operator!=(TListaCom &listaCom) {
 }
 
 TListaCom TListaCom::operator+(TListaCom &listaCom) {
-    TListaCom aux;
-    
-    aux.primero = this->primero;
-    aux.ultimo = listaCom.ultimo;
+    if(this->EsVacia()) {
+        return TListaCom(listaCom);
+    } else if(listaCom.EsVacia()) {
+        return TListaCom(*this);
+    }
+    else {
+        TListaCom listaAux(*this);
+        
+        for(TListaPos i = listaCom.Primera(); !i.EsVacia(); i = i.Siguiente()) {
+            TListaPos ult = listaAux.Ultima();
+            listaAux.InsertarD(i.pos->e, ult);
+        }
 
-    return aux;
+        return listaAux;
+    }
 }
 
 TListaCom TListaCom::operator-(TListaCom &listaCom) {
 
-    return TListaCom();
+    return listaCom;
 }
 
 bool TListaCom::EsVacia() const{
@@ -243,16 +254,59 @@ bool TListaCom::InsCabeza(const TComplejo &complejo) {
         posicion->pos->anterior = this->primero;
         return true;
     }
-
-    return true;
 }
 
 bool TListaCom::InsertarI(const TComplejo &complejo, const TListaPos &listaPos) {
-    return true;
+    TListaNodo *aux = new TListaNodo;
+    aux->e = complejo;
+    if(aux == NULL || listaPos.EsVacia()) {
+        return false;
+    }
+
+    if(this->primero == listaPos.pos) {
+        InsCabeza(complejo);
+        return true;
+    }
+    else {
+        for(TListaPos i = this->Primera(); !i.EsVacia(); i = i.Siguiente()) {
+            if(i.Siguiente() == listaPos) {
+                return InsertarD(complejo, i.Siguiente());
+            }
+        } 
+    }
+
+    return false;
 }
 
 bool TListaCom::InsertarD(const TComplejo &complejo, const TListaPos &listaPos) {
-    return true;
+    TListaNodo *aux = new TListaNodo;
+    aux->e = complejo;
+    if(aux == NULL || listaPos.EsVacia()) {
+        return false;
+    }
+    else {
+        for(TListaPos i = this->Primera(); !i.EsVacia(); i = i.Siguiente()) {
+            if(i == listaPos) {
+                if(i.pos == this->ultimo) {
+                    this->ultimo = aux;
+                    i.pos->siguiente = aux;
+                    aux->anterior = i.pos;
+
+                    return true;
+                } 
+                else {
+                    i.pos->siguiente->anterior = aux;
+                    aux->siguiente = i.pos->siguiente;
+                    aux->anterior = i.pos;
+                    i.pos->siguiente = aux;
+
+                    return true;
+                }
+            }
+        }
+    }
+
+    return false;
 }
 
 bool TListaCom::Borrar(const TComplejo &complejo) {
