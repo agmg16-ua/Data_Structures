@@ -199,26 +199,31 @@ bool TListaCom::operator!=(TListaCom &listaCom) {
 }
 
 TListaCom TListaCom::operator+(TListaCom &listaCom) {
-    if(this->EsVacia()) {
-        return TListaCom(listaCom);
-    } else if(listaCom.EsVacia()) {
-        return TListaCom(*this);
+    TListaCom listaAux;
+    
+    for(TListaPos i = listaCom.Ultima(); !i.EsVacia(); i = i.Anterior()) {
+        listaAux.InsCabeza(i.pos->e);
     }
-    else {
-        TListaCom listaAux(*this);
-        
-        for(TListaPos i = listaCom.Primera(); !i.EsVacia(); i = i.Siguiente()) {
-            TListaPos ult = listaAux.Ultima();
-            listaAux.InsertarD(i.pos->e, ult);
-        }
 
-        return listaAux;
+    for(TListaPos i = this->Ultima(); !i.EsVacia(); i = i.Anterior()) {
+        listaAux.InsCabeza(i.pos->e);
     }
+
+    return listaAux;
 }
 
 TListaCom TListaCom::operator-(TListaCom &listaCom) {
+    TListaCom listaAux;
 
-    return listaCom;
+    for(TListaPos i = this->Ultima(); !i.EsVacia(); i = i.Anterior()) {
+        listaAux.InsCabeza(i.pos->e);
+    }
+    
+    for(TListaPos i = listaCom.Primera(); !i.EsVacia(); i = i.Siguiente()) {
+        listaAux.BorrarTodos(i.pos->e);
+    }
+
+    return listaAux;
 }
 
 bool TListaCom::EsVacia() const{
@@ -323,7 +328,13 @@ bool TListaCom::Borrar(const TComplejo &complejo) {
         else {
             if(aux->siguiente != NULL && aux->siguiente->e == complejo) {
                 eliminar = aux->siguiente;
-                aux->siguiente = aux->siguiente->siguiente;
+                if(eliminar == this->ultimo) {
+                    this->ultimo = aux;
+                    aux->siguiente == NULL;
+                } else {
+                    aux->siguiente = aux->siguiente->siguiente;
+                    aux->siguiente->anterior = aux;
+                }
                 delete eliminar;
                 return true;
             }
@@ -351,7 +362,13 @@ bool TListaCom::BorrarTodos(const TComplejo &complejo) {
         else {
             if(aux->siguiente != NULL && aux->siguiente->e == complejo) {
                 eliminar = aux->siguiente;
-                aux->siguiente = aux->siguiente->siguiente;
+                if(eliminar == this->ultimo) {
+                    this->ultimo = aux;
+                    aux->siguiente = NULL;
+                } else {
+                    aux->siguiente = aux->siguiente->siguiente;
+                    aux->siguiente->anterior = aux;
+                }
                 delete eliminar;
                 elim = true;
             }
