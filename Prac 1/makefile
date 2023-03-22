@@ -16,5 +16,8 @@ $(LIBDIR)/%.o : $(LIBDIR)/%.cpp $(INCLUDEDIR)/%.h
 	$(CC) $(OPTIONS) $(DEBUG) -c -I$(INCLUDEDIR) -o $@ $<
 
 
+tar: src lib include NOMBRES.txt
+	tar cvfz PRACTICA.tgz include src lib NOMBRES.txt
+
 clean:
 	rm -f $(OBJ) $(DEL)
