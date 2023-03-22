@@ -132,7 +132,7 @@ TListaCom::~TListaCom() {
 
     while (this->primero != NULL){
         aux = this->primero->siguiente;
-        delete this->primero;
+        this->primero->~TListaNodo();
         this->primero = aux;
     }
 }
@@ -141,21 +141,13 @@ TListaCom& TListaCom::operator=(const TListaCom &listaCom) {
     if(this != &listaCom) {
         (*this).~TListaCom();
 
-        if(listaCom.EsVacia()) {
-            this->primero = NULL;
-            this->ultimo = NULL;
-        } else {
-            this->primero = listaCom.primero;
-            this->ultimo = listaCom.ultimo;
-
-            //Se recorre desde el final la lista del parametro y se añaden en la cabeza de this, para que queden en el mismo orden
-            for(TListaPos i = listaCom.Ultima(); !i.EsVacia(); i = i.Anterior()) {
-                    this->InsCabeza(i.pos->e);
-            }
+        //Se recorre desde el final la lista del parametro y se añaden en la cabeza de this, para que queden en el mismo orden
+        for(TListaPos i = listaCom.Ultima(); !i.EsVacia(); i = i.Anterior()) {
+            this->InsCabeza(i.pos->e);
         }
     }
 
-    return (*this);
+    return *this;
 }
 
 bool TListaCom::operator==(TListaCom &listaCom) {

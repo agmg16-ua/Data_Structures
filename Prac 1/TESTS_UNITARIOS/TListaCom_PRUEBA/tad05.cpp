@@ -18,6 +18,7 @@ main(void)
   l2.InsCabeza(c);
   l2.InsertarI(d, l2.Primera());
   
+  
   l3=l1+l2;
   cout<<"l3 = "<<l3<<endl;
    

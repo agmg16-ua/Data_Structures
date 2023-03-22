@@ -17,7 +17,8 @@ main(void)
   l1.InsertarD(b, l1.Ultima());
   l2.InsCabeza(c);
   l2.InsertarI(b, l2.Primera());
-  
+
+
   l3=l1-l2;
   cout<<"l3 = "<<l3<<endl;
    
