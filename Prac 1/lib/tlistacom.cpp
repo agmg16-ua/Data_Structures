@@ -314,7 +314,7 @@ bool TListaCom::Borrar(const TComplejo &complejo) {
         if(this->primero->e == complejo) {
             eliminar = this->primero;
             this->primero = this->primero->siguiente;
-            delete eliminar;
+            eliminar->~TListaNodo();
             return true;
         }
         else {
@@ -327,7 +327,7 @@ bool TListaCom::Borrar(const TComplejo &complejo) {
                     aux->siguiente = aux->siguiente->siguiente;
                     aux->siguiente->anterior = aux;
                 }
-                delete eliminar;
+                eliminar->~TListaNodo();
                 return true;
             }
 
@@ -347,7 +347,7 @@ bool TListaCom::BorrarTodos(const TComplejo &complejo) {
         if(this->primero->e == complejo) {
             eliminar = this->primero;
             this->primero = this->primero->siguiente;
-            delete eliminar;
+            eliminar->~TListaNodo();
             aux = this->primero;
             elim = true;
         }
@@ -361,7 +361,7 @@ bool TListaCom::BorrarTodos(const TComplejo &complejo) {
                     aux->siguiente = aux->siguiente->siguiente;
                     aux->siguiente->anterior = aux;
                 }
-                delete eliminar;
+                eliminar->~TListaNodo();
                 elim = true;
             }
 
