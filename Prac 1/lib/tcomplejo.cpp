@@ -79,7 +79,7 @@ TComplejo TComplejo::operator*(const TComplejo& complejo) {
 
     return aux;
 }
-
+ 
 TComplejo TComplejo::operator+(double real) {
     TComplejo aux;
     aux.re = re + real;
@@ -99,9 +99,28 @@ TComplejo TComplejo::operator-(double real) {
 TComplejo TComplejo::operator*(double real) {
     TComplejo aux;
     aux.re = re * real;
-    aux.im = im;
+    aux.im = im * real;
 
     return aux;
+}
+
+TComplejo operator+(double real, const TComplejo &complejo) {
+    TComplejo numero(real);
+
+    return numero + complejo;
+}
+
+TComplejo operator-(double real, const TComplejo &complejo) {
+    TComplejo numero(real);
+
+    return numero - complejo;
+}
+
+TComplejo operator*(double real, const TComplejo &complejo) {
+    TComplejo numero(real);
+    numero.im = real;
+
+    return numero * complejo;
 }
 
 bool TComplejo::operator==(const TComplejo& complejo) {
@@ -133,22 +152,4 @@ double TComplejo::Mod(void) {
 ostream& operator<<(ostream &o, const TComplejo& obj) {
     o << "(" << obj.re << " " << obj.im << ")";
     return o;
-}
-
-TComplejo operator+(double real, const TComplejo &complejo) {
-    TComplejo numero(real);
-
-    return numero + complejo;
-}
-
-TComplejo operator-(double real, const TComplejo &complejo) {
-    TComplejo numero(real);
-
-    return numero - complejo;
-}
-
-TComplejo operator*(double real, const TComplejo &complejo) {
-    TComplejo numero(real);
-
-    return numero * complejo;
 }

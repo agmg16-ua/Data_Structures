@@ -5,7 +5,7 @@ using namespace std;
 #include "tvectorcom.h"
 
 TVectorCom::TVectorCom() {
-    c = NULL;
+    c = new TComplejo[0];
     tamano = 0;
 }
 
@@ -23,9 +23,10 @@ TVectorCom::TVectorCom(int tam) {
 }
 
 TVectorCom::TVectorCom(const TVectorCom &vecCom) {
-    c = new TComplejo[vecCom.tamano];
     tamano = vecCom.tamano;
     c = new TComplejo[tamano];
+
+
     for(int i=0; i<tamano; i++) {
         c[i] = vecCom.c[i];
     }
@@ -112,7 +113,7 @@ int TVectorCom::Ocupadas() {
     TComplejo vacio;
 
     for(int i=0; i<tamano; i++) {
-        if(c[i]==vacio) {
+        if(c[i]!=vacio) {
             contador++;
         }
     }
@@ -160,16 +161,14 @@ bool TVectorCom::Redimensionar(int tam) {
     }
 
     if(tam < tamano) {
-        TVectorCom aux(tam);
+        TVectorCom aux(*this);
+
+        c->~TComplejo();
+        tamano = tam;
 
         for(int i=0; i<tam; i++) {
-            aux.c[i] = c[i];
+            c[i] = aux.c[i];
         }
-        
-        delete[] c;
-
-        tamano = tam;
-        c = aux.c;
 
         aux.~TVectorCom();
 
@@ -177,29 +176,23 @@ bool TVectorCom::Redimensionar(int tam) {
     }
 
     if(tam > tamano) {
-        TVectorCom aux(tam);
-        TComplejo complejo;
-        
-        for(int i=0; i<tamano; i++) {
-            aux.c[i] = c[i];
-        }
+        TVectorCom aux(*this);
+        TComplejo vacio;
 
-        delete[] c;
+        c->~TComplejo();
 
-        for(int i=tamano; i<tam; i++) {
-            aux.c[i] = complejo;
-        }
-
+        c = new TComplejo[tam];
         tamano = tam;
 
-        c[tamano];
-
-        for(int i=0; i<tamano; i++) {
+        for(int i=0; i<aux.tamano; i++) {
             c[i] = aux.c[i];
         }
 
-        aux.~TVectorCom();
+        for(int i = aux.tamano; i<tam; i++) {
+            c[i] = vacio;
+        }
 
+        aux.~TVectorCom();
 
         return true;
     }
