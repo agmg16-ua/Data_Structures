@@ -67,7 +67,7 @@ class TNodoABB {
         ~TNodoABB (); 
         
         //Operador
-        TNodoABB & operator=( TNodoABB &);
+        TNodoABB & operator=(TNodoABB &);
 };
 
 #endif
