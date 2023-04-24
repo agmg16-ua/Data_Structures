@@ -11,6 +11,8 @@ class TNodoABB;
 
 class TABBCom {
 
+    friend class TNodoABB;
+
     friend ostream & operator<<(ostream &, TABBCom &);
 
     private:
@@ -33,18 +35,18 @@ class TABBCom {
         ~TABBCom (); 
 
         //Operadores
-        TABBCom & operator=( TABBCom &);
-        bool operator==( TABBCom &); 
+        TABBCom & operator=(TABBCom &);
+        bool operator==(TABBCom &); 
 
         //Otros metodos
-        bool EsVacio(); 
+        bool EsVacio() const; 
         bool Insertar(TComplejo &); 
         bool Borrar(TComplejo &); 
         bool Buscar(TComplejo &); 
-        TComplejo Raiz(); 
-        int Altura();         
-        int Nodos(); 
-        int NodosHoja(); 
+        TComplejo Raiz() const; 
+        int Altura() const;         
+        int Nodos() const; 
+        int NodosHoja() const; 
         TVectorCom Inorden(); 
         TVectorCom Preorden(); 
         TVectorCom Postorden(); 
@@ -53,6 +55,9 @@ class TABBCom {
 };
 
 class TNodoABB {
+
+    friend class TABBCom;
+
     private:
         // El elemento del nodo 
         TComplejo item; 

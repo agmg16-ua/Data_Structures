@@ -1,0 +1,70 @@
+Evaluando TESTS_UNITARIOS/TABBCom-01.cpp
+g++ -g   -c -Iinclude -o lib/tcomplejo.o lib/tcomplejo.cpp
+g++ -g   -c -Iinclude -o lib/tvectorcom.o lib/tvectorcom.cpp
+g++ -g   -c -Iinclude -o lib/tabbcom.o lib/tabbcom.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tabbcom.o -o tad
+0a1,2
+> CORRECTO CONSTRUCTOR DE COPIA
+> CORRECTA ASIGNACION
+ERROR
+Evaluando TESTS_UNITARIOS/TABBCom-02.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tabbcom.o -o tad
+0a1
+> IGUALES
+ERROR
+Evaluando TESTS_UNITARIOS/TABBCom-03.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tabbcom.o -o tad
+0a1,2
+> [(1) (1 0)]
+> []
+ERROR
+Evaluando TESTS_UNITARIOS/TABBCom-04.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tabbcom.o -o tad
+0a1
+> IGUALES
+ERROR
+Evaluando TESTS_UNITARIOS/TABBCom-05.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tabbcom.o -o tad
+1a2,3
+> NO VACIO
+> VACIO
+ERROR
+Evaluando TESTS_UNITARIOS/TABBCom-06.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tabbcom.o -o tad
+0a1,5
+> Insertado
+> No insertado
+> Borrado
+> No borrado
+> Insertado
+ERROR
+Evaluando TESTS_UNITARIOS/TABBCom-07.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tabbcom.o -o tad
+0a1,2
+> [(1) (8 1), (2) (10 1), (3) (12 1), (4) (20 1)]
+> []
+ERROR
+Evaluando TESTS_UNITARIOS/TABBCom-08.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tabbcom.o -o tad
+4a5,24
+> Altura: 1
+> Nodos: 1
+> NodosHoja: 1
+> Raiz: (100 1)
+> Altura: 2
+> Nodos: 2
+> NodosHoja: 1
+> Raiz: (100 1)
+> Altura: 3
+> Nodos: 3
+> NodosHoja: 1
+> Raiz: (100 1)
+> Altura: 3
+> Nodos: 4
+> NodosHoja: 2
+> Raiz: (100 1)
+> Altura: 2
+> Nodos: 3
+> NodosHoja: 2
+> Raiz: (100 1)
+ERROR
