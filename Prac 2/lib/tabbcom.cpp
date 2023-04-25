@@ -287,10 +287,36 @@ TVectorCom TABBCom::Postorden() {
 }
 
 TVectorCom TABBCom::Niveles() {
-    return TVectorCom();
+    TVectorCom niveles(this->Nodos());
+    queue<TNodoABB *> cola;
+
+    int contadorPos = 1;
+
+    cola.push(this->nodo);
+
+
+    while(contadorPos <= this->Nodos()) {
+        TNodoABB *actual = cola.front();
+        cola.pop();
+
+        niveles[contadorPos] = actual->item;
+
+        if(!actual->iz.EsVacio()) {
+            cola.push(actual->iz.nodo);
+        }
+
+        if(!actual->de.EsVacio()) {
+            cola.push(actual->de.nodo);
+        }
+
+        contadorPos++;
+    }
+
+    return niveles;
 }
 
 ostream & operator<<(ostream &os, TABBCom &abbCom) {
+    os << abbCom.Niveles();
     return os;
 }
 
