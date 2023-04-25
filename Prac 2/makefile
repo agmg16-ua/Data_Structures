@@ -7,7 +7,7 @@ LIBDIR=lib
 INCLUDEDIR=include
 _OBJ= tcomplejo.o tvectorcom.o tabbcom.o
 OBJ = $(patsubst %,$(LIBDIR)/%,$(_OBJ))
-DEL = TESTS_UNITARIOS/*.out 
+DEL = TESTS_UNITARIOS/*.out misalida.txt tad
 
 tad:    src/tad.cpp $(OBJ)
 	$(CC) $(OPTIONS) $(DEBUG) -I$(INCLUDEDIR) src/tad.cpp $(OBJ) -o tad
