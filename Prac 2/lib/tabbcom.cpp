@@ -9,86 +9,92 @@ using namespace std;
 //----PRIVATE----
 
 void TABBCom::InordenAux(TVectorCom &vector, int &posicion) {
-    if(this->nodo->iz.EsVacio() && this->nodo->de.EsVacio()) {
+    if(posicion <= vector.Tamano()) {
+        if(this->nodo->iz.EsVacio() && this->nodo->de.EsVacio()) {
 
-        vector[posicion] = this->Raiz();
-    
-    } else if (this->nodo->iz.EsVacio()) {
+            vector[posicion] = this->Raiz();
+        
+        } else if (this->nodo->iz.EsVacio()) {
 
-        vector[posicion] = this->Raiz();
-        posicion++;
-        this->nodo->de.InordenAux(vector, posicion);
+            vector[posicion] = this->Raiz();
+            posicion++;
+            this->nodo->de.InordenAux(vector, posicion);
 
-    } else if (this->nodo->de.EsVacio()) {
+        } else if (this->nodo->de.EsVacio()) {
 
-        this->nodo->iz.InordenAux(vector, posicion);
-        posicion++;
-        vector[posicion] = this->Raiz();
+            this->nodo->iz.InordenAux(vector, posicion);
+            posicion++;
+            vector[posicion] = this->Raiz();
 
-    } else {
+        } else {
 
-        this->nodo->iz.InordenAux(vector, posicion);
-        posicion++;
-        vector[posicion] = this->Raiz();
-        posicion++;
-        this->nodo->de.InordenAux(vector, posicion);
+            this->nodo->iz.InordenAux(vector, posicion);
+            posicion++;
+            vector[posicion] = this->Raiz();
+            posicion++;
+            this->nodo->de.InordenAux(vector, posicion);
 
+        }
     }
 }
 
 void TABBCom::PreordenAux(TVectorCom &vector, int &posicion) {
-    if(this->nodo->iz.EsVacio() && this->nodo->de.EsVacio()) {
+    if(posicion <= vector.Tamano()) {
+        if(this->nodo->iz.EsVacio() && this->nodo->de.EsVacio()) {
 
-        vector[posicion] = this->Raiz();
-    
-    } else if (this->nodo->iz.EsVacio()) {
-
-        vector[posicion] = this->Raiz();
-        posicion++;
-        this->nodo->de.InordenAux(vector, posicion);
-
-    } else if (this->nodo->de.EsVacio()) {
-
-        vector[posicion] = this->Raiz();
-        posicion++;
-        this->nodo->iz.InordenAux(vector, posicion);
+            vector[posicion] = this->Raiz();
         
-    } else {
+        } else if (this->nodo->iz.EsVacio()) {
 
-        vector[posicion] = this->Raiz();
-        posicion++;
-        this->nodo->iz.InordenAux(vector, posicion);
-        posicion++;
-        this->nodo->de.InordenAux(vector, posicion);
+            vector[posicion] = this->Raiz();
+            posicion++;
+            this->nodo->de.PreordenAux(vector, posicion);
 
+        } else if (this->nodo->de.EsVacio()) {
+
+            vector[posicion] = this->Raiz();
+            posicion++;
+            this->nodo->iz.PreordenAux(vector, posicion);
+            
+        } else {
+
+            vector[posicion] = this->Raiz();
+            posicion++;
+            this->nodo->iz.PreordenAux(vector, posicion);
+            posicion++;
+            this->nodo->de.PreordenAux(vector, posicion);
+
+        }
     }
 }
 
 void TABBCom::PostordenAux(TVectorCom &vector, int &posicion) {
-    if(this->nodo->iz.EsVacio() && this->nodo->de.EsVacio()) {
+    if(posicion <= vector.Tamano()) {
+        if(this->nodo->iz.EsVacio() && this->nodo->de.EsVacio()) {
 
-        vector[posicion] = this->Raiz();
-    
-    } else if (this->nodo->iz.EsVacio()) {
-
-        this->nodo->de.InordenAux(vector, posicion);
-        posicion++;
-        vector[posicion] = this->Raiz();
-
-    } else if (this->nodo->de.EsVacio()) {
-
-        this->nodo->iz.InordenAux(vector, posicion);
-        posicion++;
-        vector[posicion] = this->Raiz();
+            vector[posicion] = this->Raiz();
         
-    } else {
+        } else if (this->nodo->iz.EsVacio()) {
 
-        this->nodo->iz.InordenAux(vector, posicion);
-        posicion++;
-        this->nodo->de.InordenAux(vector, posicion);
-        posicion++;
-        vector[posicion] = this->Raiz();
+            this->nodo->de.PostordenAux(vector, posicion);
+            posicion++;
+            vector[posicion] = this->Raiz();
 
+        } else if (this->nodo->de.EsVacio()) {
+
+            this->nodo->iz.PostordenAux(vector, posicion);
+            posicion++;
+            vector[posicion] = this->Raiz();
+            
+        } else {
+
+            this->nodo->iz.PostordenAux(vector, posicion);
+            posicion++;
+            this->nodo->de.PostordenAux(vector, posicion);
+            posicion++;
+            vector[posicion] = this->Raiz();
+
+        }
     }
 }
 
@@ -112,7 +118,12 @@ TABBCom::~TABBCom() {
 TABBCom &TABBCom::operator=(TABBCom &abbCom) {
     if(this != &abbCom) {
         (*this).~TABBCom();
-        this->nodo = new TNodoABB(*abbCom.nodo);
+
+        if(abbCom.EsVacio()) {
+            this->nodo = NULL;
+        } else {
+            this->nodo = new TNodoABB(*abbCom.nodo);
+        }
     }
 
     return (*this);
@@ -121,6 +132,7 @@ TABBCom &TABBCom::operator=(TABBCom &abbCom) {
 bool TABBCom::operator==(TABBCom &abbCom) {
     TVectorCom thisOrder = this->Preorden();
     TVectorCom abbComOrder = abbCom.Preorden();
+
 
     if(thisOrder.Tamano() == abbComOrder.Tamano()) {
         for(int i=1; i<thisOrder.Tamano(); i++) {
@@ -137,14 +149,13 @@ bool TABBCom::operator==(TABBCom &abbCom) {
 
 bool TABBCom::EsVacio() const{
     if(this->nodo == NULL) {
-        cout << "Vacio" << endl;
         return true;
     }
-    cout << "Vacio" << endl;
     return false;
 }
 
 bool TABBCom::Insertar(TComplejo &complejo) {
+    
     if(this->Buscar(complejo)) {
         return false;
     }
@@ -166,18 +177,51 @@ bool TABBCom::Insertar(TComplejo &complejo) {
 } 
 
 bool TABBCom::Borrar(TComplejo &complejo) {
-    return true;
+    if(this->EsVacio()) {
+        return false;
+    }
+
+    if(!this->Buscar(complejo)) {
+        return false;
+    }
+
+    if(this->Raiz() == complejo) {   
+        if(this->nodo->iz.EsVacio() && this->nodo->de.EsVacio()) {
+            this->nodo = NULL;
+            return true;
+        }
+
+        if(this->nodo->iz.EsVacio()) {
+            TNodoABB *nodoAux = this->nodo->de.nodo;
+            this->nodo = nodoAux;
+            nodoAux->~TNodoABB();
+            return true;
+        }
+
+        TVectorCom vectorIz = this->nodo->iz.Inorden();
+
+        TComplejo mayor = vectorIz[1];
+
+        for(int i=1; i<=vectorIz.Tamano(); i++) {
+            if(vectorIz[i].Mod() > mayor.Mod()) {
+                mayor = vectorIz[i];
+            }
+        }
+
+        this->nodo->item = mayor;
+
+        return this->nodo->iz.Borrar(mayor);
+
+    } else {
+        return (this->nodo->iz.Borrar(complejo) || this->nodo->de.Borrar(complejo));
+    }
+
 } 
 
 bool TABBCom::Buscar(TComplejo &complejo) {
     TVectorCom arbolb = this->Preorden();
-    for(int i=1; i<arbolb.Tamano(); i++) {
-        if(complejo == arbolb[i]) {
-            return true;
-        }
-    }
 
-    return false;
+    return arbolb.ExisteCom(complejo);
 } 
 
 TComplejo TABBCom::Raiz() const{
@@ -222,7 +266,9 @@ int TABBCom::NodosHoja() const{
 TVectorCom TABBCom::Inorden() {
     int posicion = 1;
     TVectorCom vectorCom(this->Nodos());
-    this->InordenAux(vectorCom, posicion);
+    if(vectorCom.Tamano() > 0) {
+        this->InordenAux(vectorCom, posicion);
+    }
     return vectorCom;
 }
 
