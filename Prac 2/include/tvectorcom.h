@@ -10,7 +10,7 @@ using namespace std;
 class TVectorCom{
 
     //Funciones amigas
-    friend ostream& operator<<(ostream &, TVectorCom &);
+    friend ostream& operator<<(ostream &, const TVectorCom &);
 
     private:
         //Objetos de tipo TComplejo

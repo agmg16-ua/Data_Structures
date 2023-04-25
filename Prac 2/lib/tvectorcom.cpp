@@ -201,7 +201,7 @@ bool TVectorCom::Redimensionar(int tam) {
 
 }
 
-ostream& operator<<(ostream &o, TVectorCom& obj) {
+ostream& operator<<(ostream &o, const TVectorCom& obj) {
     bool coma = false; //controlas coma para evitar el primer elemento
 
     o << '[';
