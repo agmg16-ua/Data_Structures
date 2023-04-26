@@ -42,7 +42,7 @@ class TABBCom {
         bool EsVacio() const; 
         bool Insertar(TComplejo &); 
         bool Borrar(TComplejo &); 
-        bool Buscar(TComplejo &); 
+        bool Buscar(const TComplejo &); 
         TComplejo Raiz() const; 
         int Altura() const;         
         int Nodos() const; 

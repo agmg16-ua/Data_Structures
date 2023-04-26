@@ -112,7 +112,10 @@ TABBCom::TABBCom(TABBCom &abbCom) {
 }
 
 TABBCom::~TABBCom() {
-    nodo = NULL;
+    if(nodo != NULL) {
+        delete nodo;
+        nodo = NULL;
+    }
 }
 
 TABBCom &TABBCom::operator=(TABBCom &abbCom) {
@@ -187,6 +190,7 @@ bool TABBCom::Borrar(TComplejo &complejo) {
 
     if(this->Raiz() == complejo) {   
         if(this->nodo->iz.EsVacio() && this->nodo->de.EsVacio()) {
+            delete this->nodo;
             this->nodo = NULL;
             return true;
         }
@@ -218,7 +222,7 @@ bool TABBCom::Borrar(TComplejo &complejo) {
 
 } 
 
-bool TABBCom::Buscar(TComplejo &complejo) {
+bool TABBCom::Buscar(const TComplejo &complejo) {
     TVectorCom arbolb = this->Preorden();
 
     return arbolb.ExisteCom(complejo);
@@ -328,9 +332,9 @@ TNodoABB::TNodoABB():item(),iz(),de() {}
 TNodoABB::TNodoABB(TNodoABB &nodoAbb):item(nodoAbb.item),iz(nodoAbb.iz),de(nodoAbb.de) {}
 
 TNodoABB::~TNodoABB() {
-    item.~TComplejo();
+    /*item.~TComplejo();
     iz.~TABBCom();
-    de.~TABBCom();
+    de.~TABBCom();*/
 }
 
 TNodoABB &TNodoABB::operator=(TNodoABB &nodoAbb) {
