@@ -180,6 +180,8 @@ bool TABBCom::Insertar(TComplejo &complejo) {
 } 
 
 bool TABBCom::Borrar(TComplejo &complejo) {
+    TNodoABB *arbolBorrar;
+
     if(this->EsVacio()) {
         return false;
     }
@@ -190,20 +192,26 @@ bool TABBCom::Borrar(TComplejo &complejo) {
 
     if(this->Raiz() == complejo) {   
         if(this->nodo->iz.EsVacio() && this->nodo->de.EsVacio()) {
-            delete this->nodo;
-            this->nodo = NULL;
+            this->~TABBCom();
             return true;
         }
 
         if(this->nodo->iz.EsVacio()) {
-            TNodoABB *nodoAux = this->nodo->de.nodo;
-            this->nodo = nodoAux;
-            nodoAux->~TNodoABB();
+            arbolBorrar = this->nodo;
+            this->nodo = this->nodo->de.nodo;
+            arbolBorrar->de.nodo = NULL;
+            return true;
+        }
+
+        if(this->nodo->de.EsVacio()) {
+            arbolBorrar = this->nodo;
+            this->nodo = this->nodo->iz.nodo;
+            arbolBorrar->iz.nodo = NULL;
             return true;
         }
 
         TVectorCom vectorIz = this->nodo->iz.Inorden();
-
+        
         TComplejo mayor = vectorIz[1];
 
         for(int i=1; i<=vectorIz.Tamano(); i++) {
