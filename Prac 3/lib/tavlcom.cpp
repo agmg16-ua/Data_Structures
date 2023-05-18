@@ -99,7 +99,7 @@ void TAVLCom::PostordenAux(TVectorCom &vector, int &posicion) {
 }
 
 bool TAVLCom::InsertarAux(const TComplejo &complejo, bool &crece) {
-    bool insertado = false;
+    bool insertado = false; 
     bool creceDer = false;
     bool creceIzq = false;
 
