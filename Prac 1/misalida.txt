@@ -1,3 +1,167 @@
-lc1 = {(11 -7) (7 -7) (4 -7) (2 -7) (1 -7)}
-lc3 = {(11 -7) (7 -7) (4 -7) (2 -7) (0 0)}
-Todo destruido
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad01.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad02.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad03.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad04.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad05.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad06.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad07.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad08.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad09.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad10.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad11.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad12.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/1ComplejoPRUEBA/tad13.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad01.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad02.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad03.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad04.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad05.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad06.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad07.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad08.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad09.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad10.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad11.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/2TVectorCom_PRUEBA/tad12.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/3TListaCom_PRUEBA/tad01.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/3TListaCom_PRUEBA/tad02.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/3TListaCom_PRUEBA/tad03.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/3TListaCom_PRUEBA/tad04.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/3TListaCom_PRUEBA/tad05.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/3TListaCom_PRUEBA/tad06.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/3TListaCom_PRUEBA/tad07.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/3TListaCom_PRUEBA/tad08.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/4Final_PRUEBA/tad_final.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad01.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad02.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad03.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad04.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad05.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad06.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad07.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad08.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad09.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad10.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+2c2
+< l2 = {(0 0) (2 3) (1 0) (2 3) (1 0)}
+---
+> l2 = {(2 3) (1 0) (2 3) (1 0)}
+ERROR
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad11.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad12.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad13.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad14.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad15.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+2c2
+< lc3 = {(11 -7) (7 -7) (4 -7) (2 -7) (0 0)}
+---
+> lc3 = {(11 -7) (7 -7) (4 -7) (2 -7) (1 -7)}
+ERROR
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad16.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad17.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+1a2,3
+> 1
+> l1 = {}
+ERROR
+Evaluando TESTS_UNITARIOS/5Correcciones_PRUEBA/tad18.cpp
+g++ -g   -Iinclude src/tad.cpp lib/tcomplejo.o lib/tvectorcom.o lib/tlistacom.o -o tad
+OK

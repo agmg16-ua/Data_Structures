@@ -1,5 +1,5 @@
 /* Prueba:
-    - La sobrecarga de la operacion = y constructor copia para TListaCom
+     metodos de TListaPos
 */
 #include <iostream>
 
@@ -10,31 +10,27 @@ using namespace std;
 int
 main(void)
 {
-  TComplejo a(1, -7), b(1, -7);
-  TListaCom lc1, lc2, lc3;
+  TComplejo a, b(1), c(2, 3), d(3,4);
+  TListaCom l1;
   
-  for (int i=0; i<5; i++) {
-         a = a + double(i);
-         lc1.InsCabeza(a);
-  }
+  l1.InsCabeza(a);
   
-  lc2=lc1;
-  lc2.~TListaCom();
-  cout << "lc1 = " << lc1 << endl;
+  TListaPos p=l1.Primera();
+  TListaPos q;
   
-  for (int i=0; i<5; i++) {
-         b = b + double(i);
-         lc3.InsCabeza(b);
-  }
-  TListaCom lc4(lc3);
-
-  lc4.~TListaCom();
-  cout << "lc3 = " << lc3 << endl;
+  cout << (p==q) << endl;
+  cout<<"l1 = "<<l1<<endl;
   
-   lc1.~TListaCom();
-   lc3.~TListaCom();
+  p.~TListaPos();
+  cout<<"l1 = "<<l1<<endl;
+  
+  q=q.Siguiente();
+  q=q.Anterior();
+  
+  q=(l1.Ultima()).Siguiente();
+  q=q.Siguiente();
+  q=q.Anterior();
+  
    
-   cout<< "Todo destruido" << endl; 
-    
   return 0;
 }

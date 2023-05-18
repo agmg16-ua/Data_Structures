@@ -141,11 +141,19 @@ TListaCom& TListaCom::operator=(const TListaCom &listaCom) {
     if(this != &listaCom) {
         (*this).~TListaCom();
 
+        /*cout << *this<<","<<this->Longitud()<<endl;
+        cout << listaCom << "," << listaCom.Longitud() << endl;
+
+        cout << (listaCom.primero->anterior == NULL) << endl;
+        cout << true;*/
+
         //Se recorre desde el final la lista del parametro y se añaden en la cabeza de this, para que queden en el mismo orden
-        for(TListaPos i = listaCom.Ultima(); !i.EsVacia(); i = i.Anterior()) {
+        for(TListaPos i = listaCom.Ultima(); !i.EsVacia() ; i = i.Anterior()) {
             this->InsCabeza(i.pos->e);
         }
     }
+
+    //cout << *this << endl;
 
     return *this;
 }
@@ -267,7 +275,7 @@ bool TListaCom::InsertarI(const TComplejo &complejo, const TListaPos &listaPos) 
     else {
         for(TListaPos i = this->Primera(); !i.EsVacia(); i = i.Siguiente()) {
             if(i.Siguiente() == listaPos) {
-                return InsertarD(complejo, i.Siguiente());
+                return InsertarD(complejo, i); //CAMBIADO i.SIGUIENTE() por i
             }
         } 
     }
@@ -315,14 +323,14 @@ bool TListaCom::Borrar(const TComplejo &complejo) {
             eliminar = this->primero;
             this->primero = this->primero->siguiente;
             eliminar->~TListaNodo();
+            this->primero->anterior = NULL;
             return true;
-        }
-        else {
+        } else {
             if(aux->siguiente != NULL && aux->siguiente->e == complejo) {
                 eliminar = aux->siguiente;
                 if(eliminar == this->ultimo) {
                     this->ultimo = aux;
-                    aux->siguiente == NULL;
+                    aux->siguiente = NULL;
                 } else {
                     aux->siguiente = aux->siguiente->siguiente;
                     aux->siguiente->anterior = aux;
