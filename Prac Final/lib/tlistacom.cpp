@@ -112,19 +112,13 @@ TListaCom::TListaCom() {
 }
 
 TListaCom::TListaCom(const TListaCom &listaCom) {
-    if(listaCom.EsVacia()) {
-        this->primero = NULL;
-        this->ultimo = NULL;
-    } else {
-       this->primero = listaCom.ultimo;
-       this->ultimo = listaCom.ultimo;
-       this->primero->siguiente = NULL;
-       this->primero->anterior = NULL;
+    primero = NULL;
+    ultimo = NULL;
+    TListaPos aux = listaCom.Ultima();
 
-        //Se recorre desde el final la lista del parametro y se añaden en la cabeza de this, para que queden en el mismo orden
-       for(TListaPos i = listaCom.Ultima().Anterior(); !i.EsVacia(); i = i.Anterior()) {
-            this->InsCabeza(i.pos->e);
-       }
+    while(aux.EsVacia() == false){
+        this->InsCabeza(aux.pos->e);
+        aux = aux.Anterior();
     }
 }
 
