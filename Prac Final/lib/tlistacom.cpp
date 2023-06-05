@@ -205,7 +205,7 @@ TListaCom TListaCom::operator+(const TListaCom &listaCom) {
     return listaAux;
 }
 
-TListaCom TListaCom::operator-(TListaCom &listaCom) {
+TListaCom TListaCom::operator-(const TListaCom &listaCom) {
     TListaCom listaAux;
 
     for(TListaPos i = this->Ultima(); !i.EsVacia(); i = i.Anterior()) {
@@ -341,36 +341,37 @@ bool TListaCom::Borrar(const TComplejo &complejo) {
 
 bool TListaCom::BorrarTodos(const TComplejo &complejo) {
     bool elim = false;
-    TListaNodo *aux = this->primero;
-    TListaNodo *eliminar;
-
-    while(aux != NULL) {
-        if(this->primero->e == complejo) {
-            eliminar = this->primero;
-            this->primero = this->primero->siguiente;
-            eliminar->~TListaNodo();
-            aux = this->primero;
-            elim = true;
-        }
-        else {
-            if(aux->siguiente != NULL && aux->siguiente->e == complejo) {
-                eliminar = aux->siguiente;
-                if(eliminar == this->ultimo) {
-                    this->ultimo = aux;
-                    aux->siguiente = NULL;
-                } else {
-                    aux->siguiente = aux->siguiente->siguiente;
-                    aux->siguiente->anterior = aux;
+    if(this->Buscar(complejo) == false){
+        return elim;
+    }
+    else{
+        TListaPos aux = this->Primera();
+        while(aux.pos != NULL){
+            if(aux.pos->e == complejo){
+                if(this->Longitud() == 1){
+                    primero = NULL;
+                    ultimo = NULL;
+                    return true;    //Porque no queda mas nada para borrar
                 }
-                eliminar->~TListaNodo();
+                else if(aux.pos == ultimo){
+                    ultimo = aux.pos->anterior;
+                    ultimo->siguiente = NULL;
+                    return true;    //Porque si hace un siguiente se va a encontrar con un NULL
+                }
+                else if(aux.pos == primero){
+                    primero = aux.pos->siguiente;
+                    primero->anterior = NULL;
+                }
+                else{
+                    aux.pos->siguiente->anterior = aux.pos->anterior;
+                    aux.pos->anterior->siguiente = aux.pos->siguiente;
+                }
                 elim = true;
             }
-
-            aux = aux->siguiente;
+            aux = aux.Siguiente();
         }
+        return elim;
     }
-
-    return elim;
 }
 
 bool TListaCom::Borrar(const TListaPos &listaPos) {

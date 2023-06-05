@@ -83,7 +83,7 @@ class TListaCom {
         bool operator==(const TListaCom &) const;
         bool operator!=(TListaCom &);
         TListaCom operator+(const TListaCom &);
-        TListaCom operator-(TListaCom &);
+        TListaCom operator-(const TListaCom &);
 
         //Otros metodos
         bool EsVacia() const;
