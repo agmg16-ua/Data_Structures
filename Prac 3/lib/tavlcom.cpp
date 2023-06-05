@@ -13,7 +13,7 @@ void TAVLCom::InordenAux(TVectorCom &vector, int &posicion) {
         if(this->raiz->iz.EsVacio() && this->raiz->de.EsVacio()) {
 
             vector[posicion] = this->Raiz();
-        
+         
         } else if (this->raiz->iz.EsVacio()) {
 
             vector[posicion] = this->Raiz();
