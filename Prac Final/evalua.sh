@@ -3,7 +3,7 @@
 #
 
 #Si tus ficheros de prueba no comienzan por "tad", cambia "tad*.cpp" por el prefijo de tus ficheros, por ejemplo "prueba*.cpp":
-for FILE in TESTS_UNITARIOS/*Prueba/tad*.cpp ; do 
+for FILE in TESTS_UNITARIOS/1_5*Prueba/tad*.cpp ; do 
 	echo "Evaluando $FILE"
 	
 	cp $FILE src/tad.cpp 
@@ -14,7 +14,7 @@ for FILE in TESTS_UNITARIOS/*Prueba/tad*.cpp ; do
 	if [ "$?" == "0" ]; then
 		echo "OK"
 	else
-		echo "ERROR"
+		echo "-------------ERROR en $FILE-----------------"
 	fi
 	
 done
