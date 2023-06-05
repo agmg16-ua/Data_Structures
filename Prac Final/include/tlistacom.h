@@ -80,9 +80,9 @@ class TListaCom {
 
         //Operadores
         TListaCom &operator=(const TListaCom &);
-        bool operator==(TListaCom &);
+        bool operator==(const TListaCom &) const;
         bool operator!=(TListaCom &);
-        TListaCom operator+(TListaCom &);
+        TListaCom operator+(const TListaCom &);
         TListaCom operator-(TListaCom &);
 
         //Otros metodos

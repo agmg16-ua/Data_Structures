@@ -52,6 +52,7 @@ TListaPos::~TListaPos() {
 
 TListaPos& TListaPos::operator=(const TListaPos &listaPos) {
     if(this != &listaPos) {
+        this->~TListaPos();
         this->pos = listaPos.pos;
     }
 
@@ -141,35 +142,27 @@ TListaCom& TListaCom::operator=(const TListaCom &listaCom) {
     if(this != &listaCom) {
         (*this).~TListaCom();
 
-        /*cout << *this<<","<<this->Longitud()<<endl;
-        cout << listaCom << "," << listaCom.Longitud() << endl;
-
-        cout << (listaCom.primero->anterior == NULL) << endl;
-        cout << true;*/
-
         //Se recorre desde el final la lista del parametro y se añaden en la cabeza de this, para que queden en el mismo orden
         for(TListaPos i = listaCom.Ultima(); !i.EsVacia() ; i = i.Anterior()) {
             this->InsCabeza(i.pos->e);
         }
     }
 
-    //cout << *this << endl;
-
     return *this;
 }
 
-bool TListaCom::operator==(TListaCom &listaCom) {
+bool TListaCom::operator==(const TListaCom &listaCom) const {
     TListaPos posic = this->Primera();
     TListaPos posicParam = listaCom.Primera();
 
     if(this->Longitud() == listaCom.Longitud()) {
-        do {
-            if(posic.pos->e != posicParam.pos->e) {
+        while(posic.pos != NULL) {
+            if(posic.pos != posicParam.pos) {
                 return false;
             }
             posic = posic.Siguiente();
             posicParam = posicParam.Siguiente();
-        } while(!posic.EsVacia());
+        }
 
         return true;
 
@@ -183,13 +176,13 @@ bool TListaCom::operator!=(TListaCom &listaCom) {
     TListaPos posicParam = listaCom.Primera();
 
     if(this->Longitud() == listaCom.Longitud()) {
-        do {
-            if(posic.pos->e != posicParam.pos->e) {
+        while(posic.pos != NULL) {
+            if(posic.pos != posicParam.pos) {
                 return true;
             }
             posic = posic.Siguiente();
             posicParam = posicParam.Siguiente();
-        } while(!posic.EsVacia());
+        }
 
         return false;
 
@@ -198,7 +191,7 @@ bool TListaCom::operator!=(TListaCom &listaCom) {
     }
 }
 
-TListaCom TListaCom::operator+(TListaCom &listaCom) {
+TListaCom TListaCom::operator+(const TListaCom &listaCom) {
     TListaCom listaAux;
     
     for(TListaPos i = listaCom.Ultima(); !i.EsVacia(); i = i.Anterior()) {
