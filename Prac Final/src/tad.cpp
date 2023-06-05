@@ -1,36 +1,31 @@
 /* Prueba:
-     metodos de TListaPos
+     - INSERCION y preorden
 */
+
 #include <iostream>
-
+#include "tavlcom.h"
+#include "tcomplejo.h"
+#include "tvectorcom.h"
 using namespace std;
-
-#include "tlistacom.h"
 
 int
 main(void)
 {
-  TComplejo a, b(1), c(2, 3), d(3,4);
-  TListaCom l1;
+  TAVLCom a;
+  TComplejo c4(4,4),c6(6,6),c1(1,1),c2(2,2),c3(3,3),c5(5,5),c7(7,7);
+  TVectorCom l1,l2,l3;
   
-  l1.InsCabeza(a);
+  a.Insertar(c1);
+  a.Insertar(c2);
+  a.Insertar(c3);
+  a.Insertar(c4);
+  a.Insertar(c5);
+  a.Insertar(c6);
+  a.Insertar(c7);
+
+
+  cout<<"preorden="<<a.Preorden()<<endl;
+
   
-  TListaPos p=l1.Primera();
-  TListaPos q;
-  
-  cout << (p==q) << endl;
-  cout<<"l1 = "<<l1<<endl;
-  
-  p.~TListaPos();
-  cout<<"l1 = "<<l1<<endl;
-  
-  q=q.Siguiente();
-  q=q.Anterior();
-  
-  q=(l1.Ultima()).Siguiente();
-  q=q.Siguiente();
-  q=q.Anterior();
-  
-   
-  return 0;
+  return 1;
 }

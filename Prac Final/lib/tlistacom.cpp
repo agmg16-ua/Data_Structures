@@ -60,38 +60,50 @@ TListaPos& TListaPos::operator=(const TListaPos &listaPos) {
 }
 
 bool TListaPos::operator==(const TListaPos &listaPos) const {
-    if(this->pos == listaPos.pos) {
+    if(pos == NULL || listaPos.pos == NULL){
+        return false;
+    }
+    if(pos->e == listaPos.pos->e && pos->anterior == listaPos.pos->anterior && pos->siguiente == listaPos.pos->siguiente){
         return true;
     }
-    return false;
+    else{
+        return false;
+    }
 }
 
 bool TListaPos::operator!=(const TListaPos &listaPos) const {
-    if(this->pos == listaPos.pos) {
-        return false;
-    }
-
-    return true;
+    return !(*this == listaPos);
 }
 
 TListaPos TListaPos::Anterior() const {
     TListaPos aux;
-
-    if(this->pos->anterior != NULL) {
-        aux.pos = this->pos->anterior;
+    
+    if(pos == NULL){
+        return aux;
     }
 
-    return aux;
+    if(pos->anterior == NULL){
+        return aux;
+    }
+    else{
+        aux.pos = pos->anterior;
+        return aux;
+    }
 }
 
 TListaPos TListaPos::Siguiente() const {
     TListaPos aux;
-
-    if(this->pos->siguiente != NULL) {
-        aux.pos = this->pos->siguiente;
+    if(pos == NULL){
+        return aux;
     }
 
-    return aux;
+    if(pos->siguiente == NULL){
+        return aux;
+    }
+    else{
+        aux.pos = pos->siguiente;
+        return aux;
+    }
 }
 
 bool TListaPos::EsVacia() const {
