@@ -299,7 +299,7 @@ bool TAVLCom::BorrarAux(const TComplejo &complejo, bool &decrece) {
 void TAVLCom::IzqRotaIzq() {
     TNodoAVL *derNuevaRaiz = this->raiz;
     TNodoAVL *nuevaRaiz = derNuevaRaiz->iz.raiz;
-    TNodoAVL *izqDerNuevaRaiz = derNuevaRaiz->de.raiz;
+    TNodoAVL *izqDerNuevaRaiz = nuevaRaiz->de.raiz;
 
     this->raiz = nuevaRaiz;
     nuevaRaiz->de.raiz = derNuevaRaiz;
