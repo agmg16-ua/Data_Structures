@@ -536,6 +536,14 @@ TVectorCom TAVLCom::Postorden() {
     return vectorCom;
 }
 
+bool TAVLCom::EsHoja() {
+    if(this->raiz->de.EsVacio() && this->raiz->iz.EsVacio()) {
+        return true;
+    }
+
+    return false;
+}
+
 ostream & operator<<(ostream &os, TAVLCom &avlCom) {
     os << avlCom.Inorden();
     return os;

@@ -65,6 +65,8 @@ class TAVLCom {
         TVectorCom Inorden();
         TVectorCom Preorden();
         TVectorCom Postorden();
+
+        bool EsHoja();
 };
 
 class TNodoAVL {
