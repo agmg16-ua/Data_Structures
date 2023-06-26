@@ -328,9 +328,11 @@ TVectorCom TABBCom::Niveles() {
 }
 
 //-----------------------------------------METODO EXAMEN-------------------------------------------------
+
+//Metodo auxiliar para buscar el complejo
 void TABBCom::BuscaVecABBAux(TComplejo complejo, TListaCom &listacom) {
-    if(this->Raiz() == complejo) {
-        if(listacom.EsVacia()) {
+    if(this->Raiz() == complejo) { //Si es la raiz...
+        if(listacom.EsVacia()) { //Si esta vacia la lista, se inserta en cabeza. Si no, a la derecha del ultimo
             listacom.InsCabeza(complejo);
         }
         else {
@@ -338,52 +340,65 @@ void TABBCom::BuscaVecABBAux(TComplejo complejo, TListaCom &listacom) {
         }
     }
     else {
-        if(complejo > this->Raiz()) {
-            this->nodo->de.BuscaVecABBAux(complejo, listacom);
-            listacom.InsertarD(this->Raiz(), listacom.Ultima()); 
+        if(complejo > this->Raiz()) { //Si el complejo es mayor que la raiz...
+            this->nodo->de.BuscaVecABBAux(complejo, listacom); //Llamada recursiva para buscar a la derecha del arbol el complejo
+            listacom.InsertarD(this->Raiz(), listacom.Ultima()); //Se inserta a la derecha el elemento actual
         }
         else {
-            this->nodo->iz.BuscaVecABBAux(complejo, listacom);
-            listacom.InsertarD(this->Raiz(), listacom.Ultima());
+            this->nodo->iz.BuscaVecABBAux(complejo, listacom); //Llamada recursiva para buscar a la izquierda del arbol el complejo
+            listacom.InsertarD(this->Raiz(), listacom.Ultima()); //Se inserta a la derecha el elemento actual
         }
     }
 
 }
 
 
+/*
+Cuando se van a insertar elementos en la lista, se realiza primero la llamada recursiva hasta encontrar
+el complejo, y despues se inserta el elemento. De esta manera se inserta la el complejo y cuando vuelve de 
+las llamadas recursivas se va insertando el camino de manera inversa
+*/
 TListaCom TABBCom::BuscaVecABB(TVectorCom &vectorcom) {
     TListaCom listacom;
-    if(vectorcom.Tamano() == 0) {
+    if(vectorcom.Tamano() == 0) { //Si el tamaño del vector es 0, esta vacio y se devuelve la lista vacia
         return listacom;
     }
 
-    if(this->EsVacio()) {
+    if(this->EsVacio()) { //Si el arbol esta vacio, se devuelve la lista vacia
         return listacom;
     }
 
+<<<<<<< HEAD:EXAMEN JUNIO/lib/tabbcom.cpp
     for(int i=1; i<=vectorcom.Tamano(); i++) {
         TComplejo complejo = vectorcom[i];
         if(this->Buscar(complejo)) {
             if(this->Raiz() == complejo) {
                 if(listacom.EsVacia()) {
+=======
+    for(int i=1; i<=vectorcom.Tamano(); i++) { //Se recorre el vector
+        TComplejo complejo = vectorcom[i]; //Se guarda el complejo del vector en una variable por comodidad
+        if(this->Buscar(complejo)) { //Si existe el complejo en el arbol...
+            if(this->Raiz() == complejo) { //Si la raiz es el complejo...
+                if(listacom.EsVacia()) { //Si la lista esta vacia, se inserta en cabeza, si no se inserta a la derecha del ultimo
+>>>>>>> cb6f317e5c1ae9e9bb00e4ff4e9bda7573564de0:Examenes/Junio 2023/EXAMEN/lib/tabbcom.cpp
                     listacom.InsCabeza(complejo);
                 }
                 else {
                     listacom.InsertarD(complejo, listacom.Ultima());
                 }
             }
-            else if(complejo > this->Raiz()) {
-                this->nodo->de.BuscaVecABBAux(complejo, listacom);
-                listacom.InsertarD(this->Raiz(), listacom.Ultima());
+            else if(complejo > this->Raiz()) { //Si el complejo es mayor que la raiz...
+                this->nodo->de.BuscaVecABBAux(complejo, listacom); //Metodo auxiliar para buscar el complejo a la derecha del arbol
+                listacom.InsertarD(this->Raiz(), listacom.Ultima()); //Se inserta la raiz
             }
             else {
-                this->nodo->iz.BuscaVecABBAux(complejo, listacom);
-                listacom.InsertarD(this->Raiz(), listacom.Ultima());
+                this->nodo->iz.BuscaVecABBAux(complejo, listacom); //Metodo auxiliar para biscar el complejo a la izquierda del arbol
+                listacom.InsertarD(this->Raiz(), listacom.Ultima()); //Se inserta la raiz
             }
         }
     }
 
-    return listacom;
+    return listacom; //Se devuelve la lista
 
 }
 
