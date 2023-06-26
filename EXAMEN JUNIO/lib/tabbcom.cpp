@@ -361,7 +361,7 @@ TListaCom TABBCom::BuscaVecABB(TVectorCom &vectorcom) {
         return listacom;
     }
 
-    for(int i=0; i<vectorcom.Tamano(); i++) {
+    for(int i=1; i<=vectorcom.Tamano(); i++) {
         TComplejo complejo = vectorcom[i];
         if(this->Buscar(complejo)) {
             if(this->Raiz() == complejo) {
